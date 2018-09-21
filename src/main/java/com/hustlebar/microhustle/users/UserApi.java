@@ -23,7 +23,16 @@ public class UserApi implements IUserApi {
     }
 
     @Override
-    public User get(String id) {
-        return null;
+    public Response get(String name) {
+        final User user = userManager.get(name);
+        if (user == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("User not found with name: " + name)
+                    .build();
+        }
+
+        return Response.ok()
+                .entity(user)
+                .build();
     }
 }

@@ -21,7 +21,7 @@ public interface IUserApi {
 
     Response all();
 
-    @Path("id")
+    @Path("{name}")
     @GET
-    User get(@PathParam("id") String id);
+    Response get(@PathParam("name") String name);
 }

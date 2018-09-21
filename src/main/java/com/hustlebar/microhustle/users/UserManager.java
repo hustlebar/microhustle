@@ -17,7 +17,20 @@ public class UserManager {
         return users;
     }
 
+    User get(String name) {
+        User matchedUser = null;
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                matchedUser = user;
+                break;
+            }
+        }
+
+        return matchedUser;
+    }
+
     static {
-        users.add(new User("tham@gmail.com", UUID.randomUUID().toString(), "Tham"));
+        users.add(new User("tham@gmail.com", "Tham"));
+        users.add(new User("roger@gmail.com", "Roger"));
     }
 }
