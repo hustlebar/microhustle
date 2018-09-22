@@ -33,4 +33,9 @@ public class UserManager {
         users.add(new User("tham@gmail.com", "Tham"));
         users.add(new User("roger@gmail.com", "Roger"));
     }
+
+    public void create(User user) {
+        users.add(user);
+        System.out.println("User created successfully!");
+    }
 }

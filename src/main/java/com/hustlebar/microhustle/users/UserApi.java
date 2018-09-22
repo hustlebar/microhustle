@@ -35,4 +35,9 @@ public class UserApi implements IUserApi {
                 .entity(user)
                 .build();
     }
+
+    @Override
+    public void create(User user) {
+        userManager.create(user);
+    }
 }
