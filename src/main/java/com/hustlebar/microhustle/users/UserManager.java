@@ -3,7 +3,6 @@ package com.hustlebar.microhustle.users;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author tham
