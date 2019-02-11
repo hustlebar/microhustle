@@ -23,6 +23,7 @@ public class UserApi implements IUserApi {
     }
 
     @Override
+    @Metric(name = "users.get.metric")
     public Response get(String name) {
         final User user = userManager.get(name);
         if (user == null) {
