@@ -28,7 +28,7 @@ public class UserApi implements IUserApi {
         final User user = userManager.get(name);
         if (user == null) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("User not found with name: " + name)
+                    .entity("User not found with the given name: " + name)
                     .build();
         }
 
