@@ -15,6 +15,6 @@ import javax.enterprise.context.ApplicationScoped;
 public class MicroHustleHealth implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("microhustle-health").up().build();
+        return HealthCheckResponse.named("microhustle-health").withData("Health", "I am in good health").up().build();
     }
 }
