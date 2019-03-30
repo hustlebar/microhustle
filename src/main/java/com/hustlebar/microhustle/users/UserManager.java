@@ -31,6 +31,8 @@ public class UserManager {
     static {
         users.add(new User("tham@gmail.com", "Tham"));
         users.add(new User("roger@gmail.com", "Roger"));
+        users.add(new User("joko@gmail.com", "Joko"));
+        users.add(new User("nadal@gmail.com", "Nadal"));
     }
 
     public void create(User user) {

@@ -17,6 +17,7 @@ public class UserApi implements IUserApi {
     @Timed(name = "users.all.timed")
     @Metric(name = "users.all.metric")
     public Response all() {
+        System.out.println("Enters UserApi.all()");
         return Response.ok()
                 .entity(userManager.all())
                 .build();
