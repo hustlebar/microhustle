@@ -3,6 +3,7 @@ package com.hustlebar.microhustle.users;
 import org.eclipse.microprofile.metrics.annotation.Metric;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
@@ -10,6 +11,7 @@ import javax.ws.rs.core.Response;
  * @author tham
  */
 
+@ApplicationScoped
 public class UserApi implements IUserApi {
     @Inject UserManager userManager;
 
