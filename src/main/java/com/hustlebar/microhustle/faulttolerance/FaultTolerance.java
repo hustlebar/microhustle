@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeoutException;
 
 @ApplicationScoped
 public class FaultTolerance implements IFaultTolerance {
@@ -26,7 +27,7 @@ public class FaultTolerance implements IFaultTolerance {
 
     @Override
     @Timeout(value = 50)
-    @Retry(retryOn = RuntimeException.class)
+    @Retry(maxRetries = 5, retryOn = {RuntimeException.class, TimeoutException.class})
     public Response retry(long sleep) {
         System.out.println("Enters FaultTolerance.retry()");
 
@@ -85,7 +86,10 @@ public class FaultTolerance implements IFaultTolerance {
 
 
     @Override
-    @CircuitBreaker(successThreshold = 10, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 100)
+    @CircuitBreaker(successThreshold = 10,
+            requestVolumeThreshold = 4,
+            failureRatio = 0.75,
+            delay = 100)
     public Response circuitbreak() {
         System.out.println("Enters FaultTolerance.circuitbreak()");
 
