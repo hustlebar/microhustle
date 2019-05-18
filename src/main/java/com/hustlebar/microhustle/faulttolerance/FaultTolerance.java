@@ -54,7 +54,6 @@ public class FaultTolerance implements IFaultTolerance {
                 .build();
     }
 
-
     private void forcedDelay(long sleep) {
         System.out.println("Enters sleep with: " + sleep + " value");
         try {
