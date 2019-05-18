@@ -10,4 +10,12 @@ public interface IFaultTolerance {
     @GET
     @Path("timeout")
     Response timeout(@QueryParam("sleep") long sleep);
+
+    @GET
+    @Path("retry")
+    Response retry(@QueryParam("sleep") long sleep);
+
+    @GET
+    @Path("fallback")
+    Response fallback(@QueryParam("sleep") long sleep);
 }
