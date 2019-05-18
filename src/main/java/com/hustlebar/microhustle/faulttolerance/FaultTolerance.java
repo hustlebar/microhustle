@@ -1,11 +1,11 @@
 package com.hustlebar.microhustle.faulttolerance;
 
-import org.eclipse.microprofile.faulttolerance.Fallback;
-import org.eclipse.microprofile.faulttolerance.Retry;
-import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.faulttolerance.*;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 @ApplicationScoped
 public class FaultTolerance implements IFaultTolerance {
@@ -51,6 +51,46 @@ public class FaultTolerance implements IFaultTolerance {
         }
         return Response.ok()
                 .entity("FaultTolerance.fallback() success!")
+                .build();
+    }
+
+    @Override
+    @Bulkhead(value = 5)
+    public Response bulkhead() {
+        System.out.println("Enters FaultTolerance.bulkhead()");
+
+        //semaphore isolation
+        //maximum 5 concurrent connections are allowed
+
+        return Response.ok()
+                .entity("FaultTolerance.bulkhead() success!")
+                .build();
+    }
+
+    @Override
+    @Bulkhead(value = 5, waitingTaskQueue = 5)
+    @Asynchronous
+    public Future<Response> bulkheadAsync() {
+        System.out.println("Enters FaultTolerance.bulkheadAsync()");
+
+        //thread-pool style isolation
+        //maximum 5 concurrent connections are allowed
+        //maximum 5 connections are allowed in the waiting queue
+        return CompletableFuture.completedFuture(
+                Response.ok()
+                .entity("FaultTolerance.bulkheadAsync() success!")
+                .build()
+        );
+    }
+
+
+    @Override
+    @CircuitBreaker(successThreshold = 10, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 100)
+    public Response circuitbreak() {
+        System.out.println("Enters FaultTolerance.circuitbreak()");
+
+        return Response.ok()
+                .entity("FaultTolerance.circuitbreak() success!")
                 .build();
     }
 
