@@ -43,8 +43,8 @@ public class FaultTolerance implements IFaultTolerance {
 
     @Override
     @Timeout(value = 100)
-//    @Fallback(fallbackMethod = "fallbackHandler")
-    @Fallback(MicroFallbackHandler.class)
+    @Fallback(fallbackMethod = "microhustleFallback")
+//    @Fallback(MicroFallbackHandler.class)
     public Response fallback(long sleep) {
         System.out.println("Enters FaultTolerance.fallback()");
         if (sleep > 0) {
@@ -107,8 +107,8 @@ public class FaultTolerance implements IFaultTolerance {
         }
     }
 
-    public Response fallbackHandler() {
-        System.out.println("Enters FaultTolerance.fallbackHandler()");
+    public Response microhustleFallback() {
+        System.out.println("Enters FaultTolerance.microhustleFallback()");
         return Response.ok()
                 .entity("Success from fallback handler")
                 .build();
