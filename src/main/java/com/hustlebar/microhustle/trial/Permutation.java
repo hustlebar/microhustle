@@ -7,8 +7,6 @@ import java.util.*;
  */
 
 public class Permutation {
-    //123
-
     List<String> values = new ArrayList<>(8);
     Set<String> nonduplicates;
 
