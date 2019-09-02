@@ -24,7 +24,6 @@ public class Permutation {
 
     private void print(String value, int l, int r) {
         if (l == r) {
-//            System.out.println(value);
             values.add(value);
         } else {
             for (int i = l; i <= r; i++) {
