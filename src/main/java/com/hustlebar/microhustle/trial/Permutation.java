@@ -16,8 +16,8 @@ public class Permutation {
         Collections.sort(values);
         System.out.println(values);
         nonduplicates = new TreeSet<>(values);
-//        System.out.println(nonduplicates);
-//        System.out.println(nonduplicates.toArray()[49]);
+        System.out.println(nonduplicates);
+        System.out.println(nonduplicates.toArray()[49]);
     }
 
     private void print(String value, int l, int r) {
