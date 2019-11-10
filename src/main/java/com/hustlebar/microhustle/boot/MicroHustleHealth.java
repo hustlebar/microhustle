@@ -21,6 +21,9 @@ public class MicroHustleHealth implements HealthCheck {
 //        builder.withData("Available Processors", Runtime.getRuntime().availableProcessors());
 //        return builder.state(true).build();
 
-        return HealthCheckResponse.named("microhustle-health").withData("Health", "I am in good health").down().build();
+        return HealthCheckResponse.named("microhustle-health")
+                .withData("Health", "I am in good health")
+                .up()
+                .build();
     }
 }

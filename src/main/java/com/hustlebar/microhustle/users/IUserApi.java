@@ -24,4 +24,8 @@ public interface IUserApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     void create(User user);
+
+//    @DELETE
+//    @Path("{id}")
+//    void delete(@PathParam("id") String id);
 }

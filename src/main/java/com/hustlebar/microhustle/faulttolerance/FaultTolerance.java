@@ -1,6 +1,7 @@
 package com.hustlebar.microhustle.faulttolerance;
 
 import org.eclipse.microprofile.faulttolerance.*;
+import org.eclipse.microprofile.metrics.MetricUnits;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
@@ -43,7 +44,7 @@ public class FaultTolerance implements IFaultTolerance {
 
     @Override
     @Timeout(value = 100)
-    @Fallback(fallbackMethod = "microhustleFallback")
+//    @Fallback(fallbackMethod = "microhustleFallback")
 //    @Fallback(MicroFallbackHandler.class)
     public Response fallback(long sleep) {
         System.out.println("Enters FaultTolerance.fallback()");
